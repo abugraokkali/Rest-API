@@ -80,3 +80,7 @@ Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 **GET http://127.0.0.1:5000/Tom**
 ![Screenshot_6](images/get2.png)
+
+
+*Ali Buğra Okkalı  
+HAVELSAN - 2021*
