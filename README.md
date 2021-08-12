@@ -34,6 +34,8 @@ API'ler Java, C#, Python vb. gibi istediğiniz herhangi bir programlama dili kul
 
 # Kurulum
 
+Şimdi, Rest-API'yi oluşturmak için kullanacağımız flask, flask_restful ve veri işlemede kullanacağımız pandas paketlerini python3-pip ile kuralım.
+
 ```
 $ sudo apt install python3-pip
 ```
@@ -49,7 +51,6 @@ $ pip3 install flask_restful
 ```
 $ pip3 install pandas
 ```
-
 
 
 
