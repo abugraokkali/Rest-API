@@ -78,10 +78,10 @@ Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ![Screenshot_5](images/post.png)
 
 ```GET http://127.0.0.1:5000/users```
-![Screenshot_5](images/get3.png)
+![Screenshot_5](images/get2.png)
 
 ```GET http://127.0.0.1:5000/Tom```
-![Screenshot_6](images/get2.png)
+![Screenshot_6](images/get3.png)
 
 
 *Ali Buğra Okkalı  
