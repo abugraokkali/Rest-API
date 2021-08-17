@@ -117,6 +117,9 @@ Debug mode: off
 Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
+# Testler
+Testler için bir VSCode eklentisi olan Thunder Client kullanılmıştır.
+
 ```GET http://127.0.0.1:5000/users```
 ![Screenshot_3](images/get.png)
 
