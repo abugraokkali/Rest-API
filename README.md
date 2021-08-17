@@ -1,3 +1,5 @@
+Bu repository'nin dev.to yazısına [linkten](https://dev.to/aciklab/rest-api-e26) ulaşabilirsiniz.
+
 # REST API Nedir ?
 
 REST  (**R**epresentational **S**tate **T**ransfer)  Temsili Durum Aktarımı anlamına gelir. 
