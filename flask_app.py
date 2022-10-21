@@ -1,5 +1,5 @@
-from flask import Flask
-from flask_restful import Api, Resource, reqparse
+from flask import Flask, request
+from flask_restful import Api, Resource
 import pandas as pd
 
 app = Flask(__name__)
@@ -11,34 +11,27 @@ class Users(Resource):
         data = data.to_dict('records')
         return {'data' : data}, 200
 
-
     def post(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('name', required=True)
-        parser.add_argument('age', required=True)
-        parser.add_argument('city', required=True)
-        args = parser.parse_args()
+        name = request.args['name']
+        age = request.args['age']
+        city = request.args['city']
 
         data = pd.read_csv('users.csv')
 
         new_data = pd.DataFrame({
-            'name'      : [args['name']],
-            'age'       : [args['age']],
-            'city'      : [args['city']]
+            'name'      : [name],
+            'age'       : [age],
+            'city'      : [city]
         })
 
         data = data.append(new_data, ignore_index = True)
         data.to_csv('users.csv', index=False)
-        return {'data' : new_data.to_dict('records')}, 201
+        return {'data' : new_data.to_dict('records')}, 200
 
     def delete(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('name', required=True)
-        args = parser.parse_args()
-
+        name = request.args['name']
         data = pd.read_csv('users.csv')
-
-        data = data[data['name'] != args['name']]
+        data = data[data['name'] != name]
 
         data.to_csv('users.csv', index=False)
         return {'message' : 'Record deleted successfully.'}, 200
@@ -57,7 +50,7 @@ class Name(Resource):
         for entry in data:
             if entry['name'] == name :
                 return {'data' : entry}, 200
-        return {'message' : 'No entry found with this name !'}, 200
+        return {'message' : 'No entry found with this name !'}, 404
 
 
 # Add URL endpoints
