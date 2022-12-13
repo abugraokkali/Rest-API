@@ -128,6 +128,3 @@ VSCode eklentisi olan [Thunder Client](https://www.thunderclient.com) kullanıla
 
 
 Bu repository'nin dev.to yazısına [linkten](https://dev.to/aciklab/rest-api-e26) ulaşabilirsiniz.
-
-*Ali Buğra Okkalı  
-HAVELSAN - 2021*
