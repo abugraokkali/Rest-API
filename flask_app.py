@@ -24,7 +24,7 @@ class Users(Resource):
             'city'      : [city]
         })
 
-        data = data.append(new_data, ignore_index = True)
+        data = pd.concat([data, new_data], ignore_index=True)
         data.to_csv('users.csv', index=False)
         return {'data' : new_data.to_dict('records')}, 200
 
