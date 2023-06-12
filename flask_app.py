@@ -12,35 +12,32 @@ class Users(Resource):
         return {'data' : data}, 200
 
     def post(self):
-        name = request.args['name']
-        age = request.args['age']
-        city = request.args['city']
-
-        data = pd.read_csv('users.csv')
-
-        new_data = pd.DataFrame({
-            'name'      : [name],
-            'age'       : [age],
-            'city'      : [city]
+        json = request.get_json()
+        req_data = pd.DataFrame({
+            'name'      : [json['name']],
+            'age'       : [json['age']],
+            'city'      : [json['city']]
         })
-
-        data = pd.concat([data, new_data], ignore_index=True)
+        data = pd.read_csv('users.csv')
+        data = pd.concat([data, req_data], ignore_index=True)
         data.to_csv('users.csv', index=False)
-        return {'data' : new_data.to_dict('records')}, 200
+        return {'message' : 'Record successfully added.'}, 200
 
     def delete(self):
         name = request.args['name']
         data = pd.read_csv('users.csv')
-        data = data[data['name'] != name]
 
-        data.to_csv('users.csv', index=False)
-        return {'message' : 'Record deleted successfully.'}, 200
+        if name in data['name'].values:
+            data = data[data['name'] != name]
+            data.to_csv('users.csv', index=False)
+            return {'message': 'Record successfully deleted.'}, 200
+        else:
+            return {'message': 'Record not found.'}, 404
 
 class Cities(Resource):
     def get(self):
         data = pd.read_csv('users.csv',usecols=[2])
         data = data.to_dict('records')
-        
         return {'data' : data}, 200
 
 class Name(Resource):
@@ -60,5 +57,5 @@ api.add_resource(Name, '/<string:name>')
 
 
 if __name__ == '__main__':
-#     app.run(host="0.0.0.0", port=5000)
+    # app.run(host="0.0.0.0", port=5000)
     app.run()
